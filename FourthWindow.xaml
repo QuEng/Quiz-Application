@@ -1,0 +1,60 @@
+﻿<Window x:Class="QuizApplication.FourthWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QuizApplication"
+        mc:Ignorable="d"
+        Height="568" Width="950" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" WindowStyle="None">
+    <Window.Resources>
+        <Style x:Key="ButtonStyle">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid Background="{TemplateBinding Background}">
+                            <ContentPresenter Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Button x:Name="BtnClose"  Margin="780,0,0,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="20" Height="20" Background="Red" />
+        <Button x:Name="BtnMaxMin"  Margin="0,0,25,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="16" Height="16" Background="Gray" />
+
+        <Label x:Name="LabelCategoryName" HorizontalAlignment="Center" Margin="40,0,40,0" VerticalAlignment="Top" FontSize="50" BorderThickness="0,0,0,0" Height="85" Width="864" FontFamily="Century Ghotic" HorizontalContentAlignment="Center"/>
+
+        <Label HorizontalAlignment="Center" Margin="14,90,14,207" VerticalAlignment="Center" FontFamily="Century Ghotic" FontWeight="Bold" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
+            <Label.Content>
+                <TextBlock x:Name="LabelCategoryQuestion" Text="question" TextWrapping="Wrap" FontSize="48" HorizontalAlignment="Center"/>
+            </Label.Content>
+        </Label>
+
+        <Label x:Name="LabelTimer" Margin="430,0,430,110" FontSize="30" VerticalAlignment="Bottom" HorizontalAlignment="Center" Height="45" Width="90" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Century Gothic"/>
+
+        <Grid x:Name="GridButtons" Visibility="Visible" Margin="0" HorizontalAlignment="Center" Width="750" Height="53" VerticalAlignment="Bottom">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button Style="{StaticResource ButtonStyle}" x:Name="ButtonFailedAnswer" Grid.Column="0" Content="Пропустити" FontSize="24" FontFamily="Century Gothic" FontWeight="Bold" Foreground="#FFCCCCCC" Background="#FFD8202D" BorderBrush="{x:Null}" Click="Button_FalseAnswerOnClick" MouseEnter="Buttons_MouseEnter" MouseLeave="Buttons_MouseLeave"></Button>
+            <Button Style="{StaticResource ButtonStyle}" x:Name="ButtonTrueAnswer" Grid.Column="1" Content="Правильна відповідь" FontSize="24" FontFamily="Century Gothic" FontWeight="Bold" Foreground="#FFCCCCCC" Background="#FF339024" BorderBrush="{x:Null}" Click="Button_TrueAnswerOnClick" MouseEnter="Buttons_MouseEnter" MouseLeave="Buttons_MouseLeave"></Button>
+            <Button Style="{StaticResource ButtonStyle}" x:Name="ButtonBack" Grid.Column="0" Grid.ColumnSpan="2" Content="Назад" FontSize="24" FontFamily="Century Gothic" FontWeight="Bold" Foreground="#FFFFFFFF" Background="#FF82B88E" BorderBrush="{x:Null}" Visibility="Hidden" MouseEnter="Buttons_MouseEnter" MouseLeave="Buttons_MouseLeave"></Button>
+        </Grid>
+        <Grid x:Name="GridAnswers" Margin="0,0,0,10" Visibility="Hidden" HorizontalAlignment="Center" Width="600" Height="100" VerticalAlignment="Bottom">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Button Style="{StaticResource ButtonStyle}" x:Name="Button1" Tag="1" Grid.Row="0" Grid.Column="0" Content="Answer 1" FontSize="24" FontFamily="Century Gothic" FontWeight="Bold" Foreground="Black" Background="#E5C9DECE" Margin="5" BorderBrush="{x:Null}" Click="Button_AnswerOnClick" MouseEnter="Buttons_MouseEnter" MouseLeave="Buttons_MouseLeave"/>
+            <Button Style="{StaticResource ButtonStyle}" x:Name="Button2" Tag="2" Grid.Row="0" Grid.Column="1" Content="Answer 2" FontSize="24" FontFamily="Century Gothic" FontWeight="Bold" Foreground="Black" Background="#E5C9DECE" Margin="5" BorderBrush="{x:Null}" Click="Button_AnswerOnClick" MouseEnter="Buttons_MouseEnter" MouseLeave="Buttons_MouseLeave"/>
+            <Button Style="{StaticResource ButtonStyle}" x:Name="Button3" Tag="3" Grid.Row="1" Grid.Column="0" Content="Answer 3" FontSize="24" FontFamily="Century Gothic" FontWeight="Bold" Foreground="Black" Background="#E5C9DECE" Margin="5" BorderBrush="{x:Null}" Click="Button_AnswerOnClick" MouseEnter="Buttons_MouseEnter" MouseLeave="Buttons_MouseLeave"/>
+            <Button Style="{StaticResource ButtonStyle}" x:Name="Button4" Tag="4" Grid.Row="1" Grid.Column="1" Content="Answer 4" FontSize="24" FontFamily="Century Gothic" FontWeight="Bold" Foreground="Black" Background="#E5C9DECE" Margin="5" BorderBrush="{x:Null}" Click="Button_AnswerOnClick" MouseEnter="Buttons_MouseEnter" MouseLeave="Buttons_MouseLeave"/>
+        </Grid>
+    </Grid>
+</Window>

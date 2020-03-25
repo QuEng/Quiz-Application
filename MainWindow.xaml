@@ -1,0 +1,62 @@
+﻿<Window x:Class="QuizApplication.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QuizApplication"
+        mc:Ignorable="d"
+        Height="568" Width="950" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" WindowStyle="None">
+    <Window.Background>
+        <ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/bg-2.jpg"/>
+    </Window.Background>
+    <Window.Resources>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="FontSize"                 Value="30"/>
+            <Setter Property="FontFamily"               Value="Segoe Print"/>
+            <Setter Property="FontWeight"               Value="Bold"/>
+            <Setter Property="Foreground"               Value="#558c91"/>
+            <Setter Property="Background"               Value="{x:Null}"/>
+            <Setter Property="HorizontalAlignment"      Value="Center"/>
+            <Setter Property="VerticalAlignment"        Value="Center"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid Background="{TemplateBinding Background}">
+                            <ContentPresenter Content="{TemplateBinding Content}"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+            <EventSetter Event="MouseEnter" Handler="MenuButton_MouseEnter"/>
+            <EventSetter Event="MouseLeave" Handler="MenuButton_MouseLeave"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Button x:Name="BtnClose"  Margin="780,0,0,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="20" Height="20" Background="Red" />
+        <Button x:Name="BtnMaxMin"  Margin="0,0,25,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="16" Height="16" Background="Gray" />
+
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="280">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Button Grid.Row="0" Content="Let`s go" Click="StartGame"/>
+            <Button Grid.Row="1" Content="Налаштування" Click="ShowSettings"/>
+            <Button Grid.Row="2" x:Name="CloseButton" Content="Вихід"/>
+        </Grid>
+        <Grid Margin="10,0,0,440" VerticalAlignment="Top">
+            <Label Content="Quiz" Margin="0" VerticalAlignment="Top" FontFamily="Snap ITC" FontSize="75" Foreground="#FFEE4242" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center">
+                <Label.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="11.329"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Label.RenderTransform>
+            </Label>
+        </Grid>
+    </Grid>
+</Window>
