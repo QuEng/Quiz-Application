@@ -9,12 +9,9 @@ using ColorConverter = System.Windows.Media.ColorConverter;
 using FontFamily = System.Windows.Media.FontFamily;
 using Color = System.Windows.Media.Color;
 
-namespace QuizApplication
-{
-    public partial class SecondWindow : Window
-    {
-        public SecondWindow()
-        {
+namespace QuizApplication {
+    public partial class SecondWindow : Window {
+        public SecondWindow() {
             InitializeComponent();
             Settings.Theme.ApplyConfiguration(this);
 
@@ -27,10 +24,8 @@ namespace QuizApplication
             
             ConfigurationButtons();            
         }
-        private void ConfigurationButtons()
-        {
-            SolidColorBrush color = new SolidColorBrush((Color)ColorConverter.ConvertFromString(Settings.Theme.ButtonBackgroundColor))
-            {
+        private void ConfigurationButtons() {
+            SolidColorBrush color = new SolidColorBrush((Color)ColorConverter.ConvertFromString(Settings.Theme.ButtonBackgroundColor)) {
                 Opacity = Settings.Theme.ButtonTransparency / 100.0
             };
             var buttonStyle = Resources["btnStyle"] as Style;
@@ -38,8 +33,7 @@ namespace QuizApplication
             buttonStyle?.Setters.Add(new Setter(FontFamilyProperty, new FontFamily(Settings.Theme.ButtonFontFamily)));
             buttonStyle?.Setters.Add(new Setter(BackgroundProperty, color));
 
-            foreach (var button in Grid_Buttons.Children.OfType<Button>())
-            {
+            foreach (var button in Grid_Buttons.Children.OfType<Button>()) {
                 button.Content = Settings.Game.CategoriesList[ Convert.ToInt32(button.Tag) - 1 ];
                 button.Style = buttonStyle;
                 button.Click += Buttons_Click;
@@ -48,8 +42,7 @@ namespace QuizApplication
             }
         }
 
-        private void Buttons_Click(object sender, RoutedEventArgs e)
-        {
+        private void Buttons_Click(object sender, RoutedEventArgs e) {
             Settings.Game.ActiveCategoryId = Convert.ToInt32(((Button)sender).Tag);
             var window = new ThirdWindow();
             window.Show();
@@ -58,21 +51,14 @@ namespace QuizApplication
             ((Button)sender).Visibility = Visibility.Hidden;
         }
 
-        private static void Buttons_MouseEnter(object sender, MouseEventArgs e)
-        {
-            var color = new SolidColorBrush((Color)ColorConverter.ConvertFromString(Settings.Theme.ButtonBackgroundColor))
-            {
+        private static void Buttons_MouseEnter(object sender, MouseEventArgs e) 
+            => ((Button)sender).Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString(Settings.Theme.ButtonBackgroundColor)) {
                 Opacity = Settings.Theme.ButtonTransparency > 90 ? (Settings.Theme.ButtonTransparency - 10) / 100.0 : (Settings.Theme.ButtonTransparency + 10) / 100.0
             };
-            ((Button)sender).Background = color;
-        }
-        private static void Buttons_MouseLeave(object sender, MouseEventArgs e)
-        {
-            var color = new SolidColorBrush((Color)ColorConverter.ConvertFromString(Settings.Theme.ButtonBackgroundColor))
-            {
+        
+        private static void Buttons_MouseLeave(object sender, MouseEventArgs e) 
+            => ((Button)sender).Background = new SolidColorBrush((Color) ColorConverter.ConvertFromString(Settings.Theme.ButtonBackgroundColor)) {
                 Opacity = Settings.Theme.ButtonTransparency / 100.0
             };
-            ((Button)sender).Background = color;
-        }
     }
 }

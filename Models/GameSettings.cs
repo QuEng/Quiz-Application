@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Runtime.Serialization;
 
-namespace QuizApplication.Models
-{
+namespace QuizApplication.Models {
     [DataContract]
     class GameSettings {
         private GameSettings() { }
@@ -32,16 +31,6 @@ namespace QuizApplication.Models
 
         public int ActiveCategoryId { get; set; }
 
-        public void SetLevel(Difficulty level)
-        {
-            Level = level;
-        }
-        public void SetTime(int time)
-        {
-            if (time < 0 || 
-                time > 20 * 60)
-                time = 90;
-            Time = time;
-        }
+        public void SetTime(int time) => Time = time > 20 * 60 ? 90 : time;
     }
 }

@@ -2,8 +2,7 @@
 
 namespace QuizApplication.Models {
     [DataContract]
-    class Settings
-    {
+    class Settings {
         [DataMember]
         public static GameSettings Game { get; set; }
         [DataMember]

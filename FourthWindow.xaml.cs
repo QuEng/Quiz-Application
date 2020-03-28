@@ -7,17 +7,14 @@ using System.Windows.Media;
 using System.Windows.Threading;
 using QuizApplication.Models;
 
-namespace QuizApplication
-{
-    public partial class FourthWindow : Window
-    {
+namespace QuizApplication {
+    public partial class FourthWindow : Window {
         private readonly DispatcherTimer _timer = new DispatcherTimer();
         private int _time,
                     _currentQuestion = 0;
         private readonly Player _player;
         private Category CurrentCategory { get; }
-        public FourthWindow()
-        {            
+        public FourthWindow() {            
             InitializeComponent();
             Settings.Theme.ApplyConfiguration(this);
 
@@ -39,8 +36,7 @@ namespace QuizApplication
             
             CurrentCategory = Settings.Game.Categories[_player.CategoryId - 1];
 
-            if (Settings.Game.IsShowAnswers)
-            {
+            if (Settings.Game.IsShowAnswers) {
                 GridButtons.Visibility = Visibility.Hidden;
                 GridAnswers.Visibility = Visibility.Visible;
             }
@@ -51,46 +47,37 @@ namespace QuizApplication
             _timer.Start();
             ShowNextQuestion();
         }
-        private void Button_AnswerOnClick(object sender, RoutedEventArgs e)
-        {
-            if (CurrentCategory.Questions[_currentQuestion - 1].IsCorrectAnswer((sender as Button).Content.ToString()))
-            {
+        private void Button_AnswerOnClick(object sender, RoutedEventArgs e) {
+            if (CurrentCategory.Questions[_currentQuestion - 1].IsCorrectAnswer((sender as Button).Content.ToString())) {
                 _player.NumberOfCorrectAnswers++;
                 _player.Score += Settings.Game.IsMultiScore ? (int)_player.Level : 1;
             }
             ShowNextQuestion();
         }
 
-        private void Button_TrueAnswerOnClick(object sender, RoutedEventArgs e)
-        {
+        private void Button_TrueAnswerOnClick(object sender, RoutedEventArgs e) {
             _player.NumberOfCorrectAnswers++;
             _player.Score += Settings.Game.IsMultiScore ? (int)_player.Level : 1;
             ShowNextQuestion();
         }
 
-        private void Button_FalseAnswerOnClick(object sender, RoutedEventArgs e)
-        {
-            ShowNextQuestion();
-        }
+        private void Button_FalseAnswerOnClick(object sender, RoutedEventArgs e) 
+            => ShowNextQuestion();
 
-        private void ButtonBackOnClick(object sender, RoutedEventArgs e)
-        {
+        private void ButtonBackOnClick(object sender, RoutedEventArgs e) {
             Player.Players.Add(_player);
             Close();
         }
 
-        private void Timer_Tick(object sender, EventArgs e)
-        {
+        private void Timer_Tick(object sender, EventArgs e) {
             if (_time != 0) _time--;
-            else if (_time == 0)
-            {
+            else if (_time == 0) {
                 if (Settings.Game.IsKeepLastQuestion) return;
                 _timer.Stop();
                 LabelCategoryQuestion.Text = "Час закінчився!\nРезультат: " + _player.NumberOfCorrectAnswers + " вірних відповідей!";
                 LabelTimer.Content = string.Empty;
 
-                if (Settings.Game.IsShowAnswers)
-                {
+                if (Settings.Game.IsShowAnswers) {
                     GridAnswers.Visibility = Visibility.Hidden;
                     GridButtons.Visibility = Visibility.Visible;
                 }
@@ -107,8 +94,7 @@ namespace QuizApplication
         
         public void ShowNextQuestion()
         {
-            if ((_time == 0 && Settings.Game.IsKeepLastQuestion) || _currentQuestion == 15)
-            {
+            if ((_time == 0 && Settings.Game.IsKeepLastQuestion) || _currentQuestion == 15) {
                 _timer.Stop();
                 LabelCategoryQuestion.Text = "Результат: " + _player.NumberOfCorrectAnswers + " вірних відповідей!";
                 LabelTimer.Content = string.Empty;
@@ -118,12 +104,9 @@ namespace QuizApplication
                 GridAnswers.Visibility = Visibility.Hidden;
                 GridButtons.Visibility = Visibility.Visible;
                 ButtonBack.Visibility = Visibility.Visible;
-            }
-            else
-            {
+            } else {
                 LabelCategoryQuestion.Text = CurrentCategory.Questions[_currentQuestion].ToString();
-                if (Settings.Game.IsShowAnswers)
-                {
+                if (Settings.Game.IsShowAnswers) {
                     Button1.Content = CurrentCategory.Questions[_currentQuestion].Answers[0];
                     Button2.Content = CurrentCategory.Questions[_currentQuestion].Answers[1];
                     Button3.Content = CurrentCategory.Questions[_currentQuestion].Answers[2];
@@ -133,14 +116,11 @@ namespace QuizApplication
             }
         }
 
-        private void Buttons_MouseEnter(object sender, MouseEventArgs e)
-        {
-            ((Button)sender).Background.Opacity = 0.8;
-        }
-        private void Buttons_MouseLeave(object sender, MouseEventArgs e)
-        {
-            ((Button)sender).Background.Opacity = 1;
-        }
+        private void Buttons_MouseEnter(object sender, MouseEventArgs e) 
+            => ((Button)sender).Background.Opacity = 0.8;
+
+        private void Buttons_MouseLeave(object sender, MouseEventArgs e) 
+            => ((Button)sender).Background.Opacity = 1;
     }
     
 }

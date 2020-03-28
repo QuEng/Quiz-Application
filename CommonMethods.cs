@@ -4,23 +4,17 @@ using System.Configuration;
 using System.Linq;
 using System.Windows;
 
-namespace QuizApplication
-{
-    class CommonMethods
-    {
-        public static void MaxMin_Click(object sender, RoutedEventArgs e)
-        {
-            foreach (Window window in Application.Current.Windows)
-            {
+namespace QuizApplication {
+    class CommonMethods {
+        public static void MaxMin_Click(object sender, RoutedEventArgs e) {
+            foreach (Window window in Application.Current.Windows) {
                 window.WindowState = window.WindowState == WindowState.Normal ? WindowState.Maximized : WindowState.Normal;
             }
         }
-        public static void CloseWindow_OnClick(object sender, RoutedEventArgs e)
-        {
+        public static void CloseWindow_OnClick(object sender, RoutedEventArgs e) {
             Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive)?.Close();
         }
-        public static void UpdateProperty(string key, string value)
-        {
+        public static void UpdateProperty(string key, string value) {
             var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
             config.AppSettings.Settings[key].Value = value;
             config.Save(ConfigurationSaveMode.Modified);

@@ -12,6 +12,5 @@ namespace QuizApplication.Models {
         }
         [DataMember]
         public string Theme { get; set; }
-
     }
 }

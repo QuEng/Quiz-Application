@@ -38,5 +38,9 @@ namespace QuizApplication.Models
             Score = 0;
         }
         
+        public string GetStatisticString() 
+            => Settings.Game.IsChooseLevel 
+                ? $"Гравець №{Id + 1}[{Level}] - {Score}" 
+                : $"Гравець №{Id + 1} - {Score}";
     }
 }

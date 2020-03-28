@@ -12,9 +12,6 @@ using Microsoft.Win32;
 using QuizApplication.Models;
 
 namespace QuizApplication {
-    /// <summary>
-    /// Interaction logic for SettingsWindow.xaml
-    /// </summary>
     public partial class SettingsWindow : Window
     {
         private Button _activeMenuButton;
@@ -44,8 +41,7 @@ namespace QuizApplication {
             }
         }
 
-        private void MenuButton_OnClick(object sender, RoutedEventArgs e)
-        {
+        private void MenuButton_OnClick(object sender, RoutedEventArgs e) {
             var button = sender as Button;
             if (_activeMenuButton == button) return;
             _activeMenuButton.Background = Brushes.Transparent;
@@ -79,15 +75,13 @@ namespace QuizApplication {
             CheckBoxShowAnswers.IsChecked = Settings.Game.IsShowAnswers;
         }
 
-        private void ButtonExit_OnClick(object sender, RoutedEventArgs e) => Close();
+        private void ButtonExit_OnClick(object sender, RoutedEventArgs e) 
+            => Close();
 
-        private void ButtonApply_OnClick(object sender, RoutedEventArgs e)
-        {
-            if (_activePanel == InterfacePanel)
-            {
+        private void ButtonApply_OnClick(object sender, RoutedEventArgs e) {
+            if (_activePanel == InterfacePanel) {
                 Settings.Application.Theme = ComboBoxChooseTheme.Text;
-                if (ComboBoxChooseTheme.SelectedIndex == 2)
-                {
+                if (ComboBoxChooseTheme.SelectedIndex == 2) {
                     Settings.Theme.Id = 3;
                     Settings.Theme.TextFontFamily = ComboBoxTextsFont.Text;
                     Settings.Theme.TextColor = ClrPicker_ColorText.SelectedColorText;
@@ -105,9 +99,7 @@ namespace QuizApplication {
                     using (var fs = new FileStream("Themes//Custom.Theme.json", FileMode.OpenOrCreate)) {
                         jsonFormatter.WriteObject(fs, Settings.Theme);
                     }
-                }
-                else
-                {
+                } else {
                     Settings.Theme = Theme.getTheme(Settings.Application.Theme);
                     Settings.Theme.ApplyConfiguration(Application.Current.MainWindow);
                 }
@@ -120,7 +112,7 @@ namespace QuizApplication {
                 Settings.Game.IsMultiScore = (bool)CheckBoxMultiScore.IsChecked;
                 Settings.Game.IsKeepLastQuestion = (bool)CheckBoxKeepLastQuestion.IsChecked;
                 Settings.Game.IsShowAnswers = (bool)CheckBoxShowAnswers.IsChecked;
-                Settings.Game.SetLevel((Difficulty)ComboBoxChooseLevel.SelectedIndex + 1);
+                Settings.Game.Level = (Difficulty)ComboBoxChooseLevel.SelectedIndex + 1;
                 Settings.Game.SetTime(Convert.ToInt32(TextBoxTime.Text));
 
                 var jsonFormatter = new DataContractJsonSerializer(typeof(GameSettings));
@@ -131,12 +123,10 @@ namespace QuizApplication {
             Close();
         }
 
-        private void ButtonInformation_Click(object sender, RoutedEventArgs e)
-        {
+        private void ButtonInformation_Click(object sender, RoutedEventArgs e) {
             string informationText = string.Empty,
                 informationCaption = string.Empty;
-            if (_activePanel == InterfacePanel)
-            {
+            if (_activePanel == InterfacePanel) {
                 informationCaption = "Інтерфейс";
                 informationText = "Тема. Ви можете обрати один із трьох запропонованих варіантів: Light, Dark, Custom. Вибравши Light або Dark буде застосовано набір заздалегіть обраних налаштувань, але, якщо ви оберете кастомізовану(Custom) тему, то зможете налаштувати вигляд програми власноруч.\n\n\n" +
                                   "=> Фон. Ви можете встановити будь-яке фонове зображення. Проте не забудьте кастомізувати інші елементи, щоб інтерфейс програми виглядав гармонічно.\n\n" +

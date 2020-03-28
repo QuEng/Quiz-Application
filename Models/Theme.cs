@@ -32,8 +32,7 @@ namespace QuizApplication.Models {
         [DataMember]
         public int WindowSizeHeight { get; set; }
 
-        public static Theme getTheme(string ThemeName)
-        {
+        public static Theme getTheme(string ThemeName) {
             var jsonFormatter = new DataContractJsonSerializer(typeof(Theme));
             using (var fs = new FileStream($"Themes//{Settings.Application.Theme}.Theme.json", FileMode.OpenOrCreate)) {
                 return jsonFormatter.ReadObject(fs) as Theme;
