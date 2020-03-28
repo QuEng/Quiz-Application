@@ -111,6 +111,7 @@
                 <RowDefinition Height="74*"></RowDefinition>
                 <RowDefinition Height="9*"></RowDefinition>
             </Grid.RowDefinitions>
+            
             <ScrollViewer x:Name="InterfacePanel"  Grid.Row="0" VerticalScrollBarVisibility="Auto">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -141,7 +142,7 @@
                             <Rectangle Style="{StaticResource RectangleStyle}"/>
                             <Label Content="Фон:" Style="{StaticResource LabelStyle}"/>
                             <Button Content="Вибрати" Height="35" Width="125" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="90,0,35,0" FontSize="16" FontFamily="Century Schoolbook" FontWeight="Bold" Click="Button_LoadImageOnClick" />
-                            <Label x:Name="LabelSelectFile" Content="Файл не вибрано" Style="{StaticResource LabelStyle}" HorizontalAlignment="Right" Margin="0,20,160,19" Width="auto" FlowDirection="RightToLeft"/>
+                            <Label x:Name="LabelSelectFile" Content="Файл не вибрано" FontSize="14" Style="{StaticResource LabelStyle}" HorizontalAlignment="Right" Margin="0,20,160,19" Width="auto" FlowDirection="RightToLeft"/>
                         </Grid>
 
                         <Grid Grid.Row="1">
@@ -179,7 +180,7 @@
                         <Grid Grid.Row="6">
                             <Rectangle Style="{StaticResource RectangleStyle}"/>
                             <Label Content="Прозорість кнопок:" Style="{StaticResource LabelStyle}"/>
-                            <TextBox x:Name="TextBoxButtonTransparency" Style="{StaticResource TextboxStyle}"/>
+                            <TextBox x:Name="TextBoxButtonTransparency" PreviewTextInput="NumberValidationTextBox" Style="{StaticResource TextboxStyle}"/>
                         </Grid>
                     </Grid>
                 </Grid>
@@ -218,7 +219,7 @@
                     <Grid Grid.Row="3">
                         <Rectangle Style="{StaticResource RectangleStyle}"/>
                         <Label Content="Час, відведений на категорію(в секундах):" Style="{StaticResource LabelStyle}"/>
-                        <TextBox x:Name="TextBoxTime"  Style="{StaticResource TextboxStyle}"/>
+                        <TextBox x:Name="TextBoxTime" PreviewTextInput="NumberValidationTextBox" Style="{StaticResource TextboxStyle}"/>
                     </Grid>
 
                     <Grid Grid.Row="4">
@@ -234,6 +235,7 @@
             </ScrollViewer>
 
             <Grid Grid.Row="1">
+                <Button Content="?" ToolTip="Довідка" Width="18" Height="20" Margin="10,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Click="ButtonInformation_Click" />
                 <Button Content="Застосувати" Style="{StaticResource ButtonStyle}" Margin="0,0,155,0" Click="ButtonApply_OnClick"/>
                 <Button Content="Вихід" Style="{StaticResource ButtonStyle}" Margin="0,0,10,0" Click="ButtonExit_OnClick"/>
             </Grid>

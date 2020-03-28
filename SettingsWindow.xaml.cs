@@ -2,8 +2,10 @@
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Json;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using Microsoft.Win32;
@@ -35,7 +37,10 @@ namespace QuizApplication {
                 if (filePath != path)
                     File.Copy(filePath, path);
                 Settings.Theme.BackgroudImageUrl = openFileDialog.SafeFileName;
-                LabelSelectFile.Content = openFileDialog.SafeFileName;
+                var fileName = openFileDialog.SafeFileName;
+                if (fileName.Length > 28)
+                    fileName = fileName.Substring(0, 28).PadLeft(30, '.');
+                LabelSelectFile.Content = fileName;
             }
         }
 
@@ -124,6 +129,38 @@ namespace QuizApplication {
                 }
             }
             Close();
+        }
+
+        private void ButtonInformation_Click(object sender, RoutedEventArgs e)
+        {
+            string informationText = string.Empty,
+                informationCaption = string.Empty;
+            if (_activePanel == InterfacePanel)
+            {
+                informationCaption = "Інтерфейс";
+                informationText = "Тема. Ви можете обрати один із трьох запропонованих варіантів: Light, Dark, Custom. Вибравши Light або Dark буде застосовано набір заздалегіть обраних налаштувань, але, якщо ви оберете кастомізовану(Custom) тему, то зможете налаштувати вигляд програми власноруч.\n\n\n" +
+                                  "=> Фон. Ви можете встановити будь-яке фонове зображення. Проте не забудьте кастомізувати інші елементи, щоб інтерфейс програми виглядав гармонічно.\n\n" +
+                                  "=> Шрифт тексту. Із запропонованого списку ви можете обрати шрифт, який буде застосовано до основного тексту програми(Назви категорій, запитання).\n" +
+                                  "=> Колір тексту. Ви маєте можливість встановити будь-який колір для основного тексту(Назви категорій, запитання).\n\n" +
+                                  "=> Шрифт тексту на кнопках. Аналогічно до шрифту тексту, ви можете обрати шрифт для кнопок в головному меню категорій із запропонованого списку.\n" +
+                                  "=> Колір тексту на кнопках. Аналогічно до кольору тексту ви маєте можливість встановити будь-який колір для тексту на кнопках в головному меню категорій.\n" +
+                                  "=> Колір кнопок. Ви можете налаштувати безпосередньо колір кнопок.\n" +
+                                  "=> Прозорість кнопок. Ви можете налаштувати прозорість кнопок. Значення задається від 0 до 100. Де 100 - це 100% кольору.";
+            } else if (_activePanel == OtherSettingsPanel) {
+                informationCaption = "Інші налаштування";
+                informationText = "=> Рівень складності. Програмою передбачено 3 рівня складності(Легкий, середній, важкий).\n" +
+                                  "=> Ви можете обрати рівень складності для усіх категорій або обирати його кожного разу перед бліцом запитань.\n" +
+                                  "=> Програма веде підрахунок очок для кожного гравця. За замовчуванням за одну правильну відповідь присвоюється 1 очко. Поставивши галочку, гравці будуть отримувати 1, 2, 3 очка за легкий, середній та складний рівень відповідно.\n" +
+                                  "=> Ви можете встановити час, який буде відведено кожному гравцеві на бліц.\n" +
+                                  "=> Якщо час закінчився, гру буде припинено, але ви маєте можливість налаштувати цю ситуцію та залишити останнє запитання, незважаючи на те, що час закінчився.\n" +
+                                  "=> Програмою передбачено два варіанти гри. Перший - із варіантами відповідей, другий - без варіантів відповідей.";
+            }
+            MessageBox.Show(informationText, $"Довідка: {informationCaption}", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e) {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
     }
 

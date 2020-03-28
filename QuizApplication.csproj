@@ -85,9 +85,6 @@
     <Compile Include="FourthWindow.xaml.cs">
       <DependentUpon>FourthWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ItemControl.xaml.cs">
-      <DependentUpon>ItemControl.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Models\ApplicationSettings.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Player.cs" />
@@ -104,10 +101,6 @@
       <DependentUpon>ThirdWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="FourthWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="ItemControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
