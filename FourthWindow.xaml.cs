@@ -16,6 +16,9 @@ namespace QuizApplication {
         private Category CurrentCategory { get; }
         public FourthWindow() {            
             InitializeComponent();
+
+            this.KeyDown += CommonMethods.KeyEvents;
+
             Settings.Theme.ApplyConfiguration(this);
 
             BtnClose.Click += CommonMethods.CloseWindow_OnClick;
@@ -66,6 +69,7 @@ namespace QuizApplication {
 
         private void ButtonBackOnClick(object sender, RoutedEventArgs e) {
             Player.Players.Add(_player);
+            Application.Current.Windows.OfType<SecondWindow>().Single().Focus();
             Close();
         }
 

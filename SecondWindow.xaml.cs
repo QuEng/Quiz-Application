@@ -13,6 +13,9 @@ namespace QuizApplication {
     public partial class SecondWindow : Window {
         public SecondWindow() {
             InitializeComponent();
+
+            this.KeyDown += CommonMethods.KeyEvents;
+
             Settings.Theme.ApplyConfiguration(this);
 
             BtnClose.Click += CommonMethods.CloseWindow_OnClick;

@@ -11,6 +11,9 @@ namespace QuizApplication {
         private readonly ImageSource[] _imageSources = new ImageSource[3];
         public ThirdWindow() {
             InitializeComponent();
+
+            this.KeyDown += CommonMethods.KeyEvents;
+
             Settings.Theme.ApplyConfiguration(this);
 
             BtnClose.Click += CommonMethods.CloseWindow_OnClick;

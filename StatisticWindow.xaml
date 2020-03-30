@@ -1,0 +1,138 @@
+﻿<Window x:Class="QuizApplication.StatisticWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QuizApplication"
+        mc:Ignorable="d"
+        Title="StaticsticWindow" Height="568" Width="500" WindowStartupLocation="CenterScreen" WindowStyle="None" Background="#FF1F1F1F" ResizeMode="NoResize">
+        <Window.Resources>
+            <Style x:Key="FirstRectangleStyle">
+                <Setter Property="Rectangle.Height" Value="auto"/>
+                <Setter Property="Rectangle.Fill" Value="#FFFFFF"/>
+                <Setter Property="Rectangle.Margin" Value="10, 0, 10, 0"/>
+            </Style>
+            <Style x:Key="SecondRectangleStyle">
+                <Setter Property="Rectangle.Height" Value="auto"/>
+                <Setter Property="Rectangle.Fill" Value="LightGray"/>
+                <Setter Property="Rectangle.Margin" Value="10, 0, 10, 0"/>
+            </Style>
+        <Style x:Key="LabelStyle">
+                <Setter Property="Control.Foreground" Value="#FF101820"/>
+                <Setter Property="Control.FontFamily" Value="Century Gothic"/>
+                <Setter Property="Control.FontSize" Value="18"/>
+                <Setter Property="Control.VerticalAlignment" Value="Center"/>
+                <Setter Property="Control.Margin" Value="15, 0, 15, 0"/>
+            </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="45"></RowDefinition>
+                <RowDefinition Height="15*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Rectangle Fill="#FF28C182" Margin="0" Style="{StaticResource FirstRectangleStyle}"/>
+                <Label Content="Гравець" Margin="5, 0, 5, 0" Foreground="White" HorizontalAlignment="Left"  Style="{StaticResource LabelStyle}"/>
+                <Label Content="Очки" Margin="5, 0, 5, 0" Foreground="White" HorizontalAlignment="Right" Style="{StaticResource LabelStyle}"/>
+                <Button x:Name="BtnClose"  Margin="0,0,0,0" VerticalAlignment="Top" HorizontalAlignment="Center" Width="20" Height="20" Background="Red" />
+            </Grid>
+            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Hidden">
+                <Grid x:Name="StatisticGrid">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="45"></RowDefinition>
+                        <RowDefinition Height="45"></RowDefinition>
+                        <RowDefinition Height="45"></RowDefinition>
+                        <RowDefinition Height="45"></RowDefinition>
+                        <RowDefinition Height="45"></RowDefinition>
+                        <RowDefinition Height="45"></RowDefinition>
+                        <RowDefinition Height="45"></RowDefinition>
+                        <RowDefinition Height="45"></RowDefinition>
+                        <RowDefinition Height="45"></RowDefinition>
+                        <RowDefinition Height="45"></RowDefinition>
+                        <RowDefinition Height="45"></RowDefinition>
+                        <RowDefinition Height="45"></RowDefinition>
+                        <RowDefinition Height="45"></RowDefinition>
+                        <RowDefinition Height="45"></RowDefinition>
+                        <RowDefinition Height="45"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Rectangle Style="{StaticResource FirstRectangleStyle}"/>
+                        <Label HorizontalAlignment="Left"  Style="{StaticResource LabelStyle}"/>
+                        <Label HorizontalAlignment="Right" Style="{StaticResource LabelStyle}"/>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <Rectangle Style="{StaticResource SecondRectangleStyle}"/>
+                        <Label HorizontalAlignment="Left"  Style="{StaticResource LabelStyle}"/>
+                        <Label HorizontalAlignment="Right" Style="{StaticResource LabelStyle}"/>
+                    </Grid>
+                    <Grid Grid.Row="2">
+                        <Rectangle Style="{StaticResource FirstRectangleStyle}"/>
+                        <Label HorizontalAlignment="Left"  Style="{StaticResource LabelStyle}"/>
+                        <Label HorizontalAlignment="Right" Style="{StaticResource LabelStyle}"/>
+                    </Grid>
+                    <Grid Grid.Row="3">
+                        <Rectangle Style="{StaticResource SecondRectangleStyle}"/>
+                        <Label HorizontalAlignment="Left"  Style="{StaticResource LabelStyle}"/>
+                        <Label HorizontalAlignment="Right" Style="{StaticResource LabelStyle}"/>
+                    </Grid>
+                    <Grid Grid.Row="4">
+                        <Rectangle Style="{StaticResource FirstRectangleStyle}"/>
+                        <Label HorizontalAlignment="Left"  Style="{StaticResource LabelStyle}"/>
+                        <Label HorizontalAlignment="Right" Style="{StaticResource LabelStyle}"/>
+                    </Grid>
+                    <Grid Grid.Row="5">
+                        <Rectangle Style="{StaticResource SecondRectangleStyle}"/>
+                        <Label HorizontalAlignment="Left"  Style="{StaticResource LabelStyle}"/>
+                        <Label HorizontalAlignment="Right" Style="{StaticResource LabelStyle}"/>
+                    </Grid>
+                    <Grid Grid.Row="6">
+                        <Rectangle Style="{StaticResource FirstRectangleStyle}"/>
+                        <Label HorizontalAlignment="Left"  Style="{StaticResource LabelStyle}"/>
+                        <Label HorizontalAlignment="Right" Style="{StaticResource LabelStyle}"/>
+                    </Grid>
+                    <Grid Grid.Row="7">
+                        <Rectangle Style="{StaticResource SecondRectangleStyle}"/>
+                        <Label HorizontalAlignment="Left"  Style="{StaticResource LabelStyle}"/>
+                        <Label HorizontalAlignment="Right" Style="{StaticResource LabelStyle}"/>
+                    </Grid>
+                    <Grid Grid.Row="8">
+                        <Rectangle Style="{StaticResource FirstRectangleStyle}"/>
+                        <Label HorizontalAlignment="Left"  Style="{StaticResource LabelStyle}"/>
+                        <Label HorizontalAlignment="Right" Style="{StaticResource LabelStyle}"/>
+                    </Grid>
+                    <Grid Grid.Row="9">
+                        <Rectangle Style="{StaticResource SecondRectangleStyle}"/>
+                        <Label HorizontalAlignment="Left"  Style="{StaticResource LabelStyle}"/>
+                        <Label HorizontalAlignment="Right" Style="{StaticResource LabelStyle}"/>
+                    </Grid>
+                    <Grid Grid.Row="10">
+                        <Rectangle Style="{StaticResource FirstRectangleStyle}"/>
+                        <Label HorizontalAlignment="Left"  Style="{StaticResource LabelStyle}"/>
+                        <Label HorizontalAlignment="Right" Style="{StaticResource LabelStyle}"/>
+                    </Grid>
+                    <Grid Grid.Row="11">
+                        <Rectangle Style="{StaticResource SecondRectangleStyle}"/>
+                        <Label HorizontalAlignment="Left"  Style="{StaticResource LabelStyle}"/>
+                        <Label HorizontalAlignment="Right" Style="{StaticResource LabelStyle}"/>
+                    </Grid>
+                    <Grid Grid.Row="12">
+                        <Rectangle Style="{StaticResource FirstRectangleStyle}"/>
+                        <Label HorizontalAlignment="Left"  Style="{StaticResource LabelStyle}"/>
+                        <Label HorizontalAlignment="Right" Style="{StaticResource LabelStyle}"/>
+                    </Grid>
+                    <Grid Grid.Row="13">
+                        <Rectangle Style="{StaticResource SecondRectangleStyle}"/>
+                        <Label HorizontalAlignment="Left"  Style="{StaticResource LabelStyle}"/>
+                        <Label HorizontalAlignment="Right" Style="{StaticResource LabelStyle}"/>
+                    </Grid>
+                    <Grid Grid.Row="14">
+                        <Rectangle Style="{StaticResource FirstRectangleStyle}"/>
+                        <Label HorizontalAlignment="Left"  Style="{StaticResource LabelStyle}"/>
+                        <Label HorizontalAlignment="Right" Style="{StaticResource LabelStyle}"/>
+                    </Grid>
+                </Grid>
+            </ScrollViewer>
+        </Grid>
+    </Grid>
+</Window>
