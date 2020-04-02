@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
-using System.Reflection.Emit;
 using System.Windows;
 using System.Windows.Input;
 using QuizApplication.Models;
@@ -23,8 +22,7 @@ namespace QuizApplication {
             var currentWindow = Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive);
             if (_oldKey == Key.LeftCtrl && e.Key == Key.Q) {
                 
-                if (Player.Players.Count > 0)
-                {
+                if (Player.Players.Count > 0) {
                     var window = new StatisticWindow {
                         Owner = currentWindow
                     };
@@ -49,7 +47,13 @@ namespace QuizApplication {
 
                     window.ShowDialog();
                 }
+            }
 
+            if (e.Key == Key.A) {
+                var window = new EditQuestionWindow() {
+                    Owner = currentWindow
+                };
+                window.ShowDialog();
             }
 
             _oldKey = e.Key;

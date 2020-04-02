@@ -55,11 +55,13 @@ namespace QuizApplication.Models {
             private string _correctAnswer;
             [DataMember]
             public string QuestionText { get; private set; }
+            public string[] UnshuffledAnswers { get; set; }
             [DataMember]
             public string[] Answers {
                 get => _answers;
-                private set {
+                set {
                     //Shuffle array
+                    UnshuffledAnswers = value;
                     _correctAnswer = value[0];
                     int[] randomIndex = { 0, 1, 2, 3 };
                     var n = randomIndex.Length;

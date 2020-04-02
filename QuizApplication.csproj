@@ -82,6 +82,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="CommonMethods.cs" />
+    <Compile Include="EditQuestionWindow.xaml.cs">
+      <DependentUpon>EditQuestionWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="FourthWindow.xaml.cs">
       <DependentUpon>FourthWindow.xaml</DependentUpon>
     </Compile>
@@ -103,6 +106,10 @@
     <Compile Include="ThirdWindow.xaml.cs">
       <DependentUpon>ThirdWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="EditQuestionWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="FourthWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
