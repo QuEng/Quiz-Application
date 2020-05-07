@@ -194,6 +194,7 @@
                         <RowDefinition Height="70"></RowDefinition>
                         <RowDefinition Height="70"></RowDefinition>
                         <RowDefinition Height="70"></RowDefinition>
+                        <RowDefinition Height="70"></RowDefinition>
                     </Grid.RowDefinitions>
 
                     <Grid Grid.Row="0">
@@ -231,11 +232,16 @@
                         <Rectangle Style="{StaticResource RectangleStyle}"/>
                         <CheckBox x:Name="CheckBoxShowAnswers" Content="Показувати варіанти відповіді" Style="{StaticResource LabelStyle}" />
                     </Grid>
+
+                    <Grid Grid.Row="6">
+                        <Rectangle Style="{StaticResource RectangleStyle}"/>
+                        <Button Content="Редагувати катергорії" HorizontalAlignment="Left" Margin="10,0" Height="35" Width="210" FontSize="16" FontFamily="Century Schoolbook" FontWeight="Bold" Click="ButtonEditCategory_OnClick"/>
+                    </Grid>
                 </Grid>
             </ScrollViewer>
 
             <Grid Grid.Row="1">
-                <Button Content="?" ToolTip="Довідка" Width="18" Height="20" Margin="10,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Click="ButtonInformation_Click" />
+                <Button Content="?" ToolTip="Довідка" Width="18" Height="20" Margin="10,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Click="ButtonInformation_OnClick" />
                 <Button Content="Застосувати" Style="{StaticResource ButtonStyle}" Margin="0,0,155,0" Click="ButtonApply_OnClick"/>
                 <Button Content="Вихід" Style="{StaticResource ButtonStyle}" Margin="0,0,10,0" Click="ButtonExit_OnClick"/>
             </Grid>

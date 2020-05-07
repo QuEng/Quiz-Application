@@ -33,8 +33,16 @@
         </Style>
     </Window.Resources>
     <Grid>
-        <Button x:Name="BtnClose"  Margin="780,0,0,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="20" Height="20" Background="Red" />
-        <Button x:Name="BtnMaxMin"  Margin="0,0,25,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="16" Height="16" Background="Gray" />
+        <Button x:Name="BtnClose"  Margin="780,0,0,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="20" Height="20" >
+            <Button.Background>
+                <ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/close-window-icon.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="BtnMaxMin"  Margin="0,0,25,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="16" Height="16" >
+            <Button.Background>
+                <ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/maximize-window-icon.png"/>
+            </Button.Background>
+        </Button>
 
         <Grid HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="280">
             <Grid.RowDefinitions>

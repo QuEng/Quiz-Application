@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QuizApplication"
         mc:Ignorable="d"
-        Title="StaticsticWindow" Height="568" Width="500" WindowStartupLocation="CenterScreen" WindowStyle="None" Background="#FF1F1F1F" ResizeMode="NoResize">
+        Title="StatisticWindow" Height="568" Width="500" WindowStartupLocation="CenterScreen" WindowStyle="None" Background="#FF1F1F1F" ResizeMode="NoResize">
         <Window.Resources>
             <Style x:Key="FirstRectangleStyle">
                 <Setter Property="Rectangle.Height" Value="auto"/>
@@ -23,7 +23,18 @@
                 <Setter Property="Control.FontSize" Value="18"/>
                 <Setter Property="Control.VerticalAlignment" Value="Center"/>
                 <Setter Property="Control.Margin" Value="15, 0, 15, 0"/>
-            </Style>
+        </Style>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid Background="{TemplateBinding Background}">
+                            <ContentPresenter Content="{TemplateBinding Content}"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Window.Resources>
     <Grid>
         <Grid>
@@ -35,7 +46,11 @@
                 <Rectangle Fill="#FF28C182" Margin="0" Style="{StaticResource FirstRectangleStyle}"/>
                 <Label Content="Гравець" Margin="5, 0, 5, 0" Foreground="White" HorizontalAlignment="Left"  Style="{StaticResource LabelStyle}"/>
                 <Label Content="Очки" Margin="5, 0, 5, 0" Foreground="White" HorizontalAlignment="Right" Style="{StaticResource LabelStyle}"/>
-                <Button x:Name="BtnClose"  Margin="0,0,0,0" VerticalAlignment="Top" HorizontalAlignment="Center" Width="20" Height="20" Background="Red" />
+                <Button x:Name="BtnClose"  Margin="0,0,0,0" VerticalAlignment="Top" HorizontalAlignment="Center" Width="20" Height="20">
+                    <Button.Background>
+                        <ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/close-window-icon.png"/>
+                    </Button.Background>
+                </Button>
             </Grid>
             <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Hidden">
                 <Grid x:Name="StatisticGrid">

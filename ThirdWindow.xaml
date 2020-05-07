@@ -19,10 +19,29 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid Background="{TemplateBinding Background}">
+                            <ContentPresenter Content="{TemplateBinding Content}"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Window.Resources>
     <Grid>
-        <Button x:Name="BtnClose"  Margin="780,0,0,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="20" Height="20" Background="Red" />
-        <Button x:Name="BtnMaxMin"  Margin="0,0,25,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="16" Height="16" Background="Gray" />
+        <Button x:Name="BtnClose"  Margin="780,0,0,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="20" Height="20" >
+            <Button.Background>
+                <ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/close-window-icon.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="BtnMaxMin"  Margin="0,0,25,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="16" Height="16" >
+            <Button.Background>
+                <ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/maximize-window-icon.png"/>
+            </Button.Background>
+        </Button>
 
         <Label x:Name="Label_CategoryName" HorizontalAlignment="Center" Margin="40,0,40,0" VerticalAlignment="Top" FontSize="50" BorderThickness="0,0,0,0" Height="85" Width="864" FontFamily="Century Ghotic" HorizontalContentAlignment="Center"/>
 

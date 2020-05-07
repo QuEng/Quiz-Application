@@ -45,11 +45,13 @@ namespace QuizApplication {
             }
 
             _time = Settings.Game.Time;
+            LabelTimer.Content = ConvertTimeFromSecond(_time);
             _timer.Tick += new EventHandler(Timer_Tick);
             _timer.Interval = new TimeSpan(0, 0, 1);
             _timer.Start();
             ShowNextQuestion();
         }
+
         private void Button_AnswerOnClick(object sender, RoutedEventArgs e) {
             if (CurrentCategory.Questions[_currentQuestion - 1].IsCorrectAnswer((sender as Button).Content.ToString())) {
                 _player.NumberOfCorrectAnswers++;
@@ -91,9 +93,7 @@ namespace QuizApplication {
                 return;
             }
 
-            int minute = _time >= 60 ? (_time / 60) : 0, second = _time % 60;
-            string str_minute = Convert.ToString(minute), str_second = second < 10 ? "0" + Convert.ToString(second) : Convert.ToString(second);
-            LabelTimer.Content = $"{str_minute}:{str_second}";
+            LabelTimer.Content = ConvertTimeFromSecond(_time);
         }
         
         public void ShowNextQuestion()
@@ -118,6 +118,16 @@ namespace QuizApplication {
                 }
                 _currentQuestion++;
             }
+        }
+
+        private string ConvertTimeFromSecond(int time) {
+            int
+                minute = time >= 60 ? (time / 60) : 0,
+                second = time % 60;
+            string
+                str_minute = Convert.ToString(minute),
+                str_second = second < 10 ? "0" + Convert.ToString(second) : Convert.ToString(second);
+            return $"{str_minute}:{str_second}";
         }
 
         private void Buttons_MouseEnter(object sender, MouseEventArgs e) 

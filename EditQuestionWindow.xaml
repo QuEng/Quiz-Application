@@ -59,7 +59,7 @@
                 <ComboBox x:Name="ComboBoxChooseCategory" Background="#FFF5F7F9" FontSize="18" Margin="0,0,10,0" Width="180" Height="45" HorizontalAlignment="Right" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
                 </ComboBox>
             </Grid>
-            <Button Grid.Column="1" Content="Загрузити категорію" Width="200" Height="45" HorizontalAlignment="Right" Margin="0,0,10,0" Style="{StaticResource ButtonStyle}" Click="ButtonLoadCategory_Click"/>
+            <Button Grid.Column="1" Content="Завантажити категорію" Width="200" Height="45" HorizontalAlignment="Right" Margin="0,0,10,0" Style="{StaticResource ButtonStyle}" Click="ButtonLoadCategory_Click"/>
         </Grid>
         <Grid Grid.Row="1">
             <TextBox x:Name="TextBoxQuestion" Margin="10,0" Height="auto" Width="auto" FontSize="16" Text="TextBox with question"/>

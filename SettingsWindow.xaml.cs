@@ -123,7 +123,7 @@ namespace QuizApplication {
             Close();
         }
 
-        private void ButtonInformation_Click(object sender, RoutedEventArgs e) {
+        private void ButtonInformation_OnClick(object sender, RoutedEventArgs e) {
             string informationText = string.Empty,
                 informationCaption = string.Empty;
             if (_activePanel == InterfacePanel) {
@@ -146,6 +146,13 @@ namespace QuizApplication {
                                   "=> Програмою передбачено два варіанти гри. Перший - із варіантами відповідей, другий - без варіантів відповідей.";
             }
             MessageBox.Show(informationText, $"Довідка: {informationCaption}", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        private void ButtonEditCategory_OnClick(object sender, RoutedEventArgs e) {
+            var window = new EditQuestionWindow() {
+                Owner = Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive)
+        };
+            window.ShowDialog();
         }
 
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e) {

@@ -49,13 +49,6 @@ namespace QuizApplication {
                 }
             }
 
-            if (e.Key == Key.A) {
-                var window = new EditQuestionWindow() {
-                    Owner = currentWindow
-                };
-                window.ShowDialog();
-            }
-
             _oldKey = e.Key;
         }
         public static void UpdateProperty(string key, string value) {
